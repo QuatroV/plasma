@@ -1,5 +1,6 @@
 import MainButton from "./MainButton";
 import { openDir } from "../utils/fileUtils";
+import OpenExistingProjectButton from "./OpenExistingProjectButton";
 
 const ButtonsContainer = () => {
   return (
@@ -9,10 +10,9 @@ const ButtonsContainer = () => {
         imgSrc="/welcome/add_circle_FILL0_wght400_GRAD0_opsz48.svg"
         onClick={openDir}
       />
-      <MainButton
+      <OpenExistingProjectButton
         title="Open existing project"
         imgSrc="/welcome/file_open_black_24dp.svg"
-        onClick={openDir}
       />
       <MainButton
         title="Education mode"
