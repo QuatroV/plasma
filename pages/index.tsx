@@ -4,13 +4,15 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import useFileStore from "../stores/fileStore";
 import WelcomeModal from "../features/welcome/components/WelcomeModal";
+import MenuBar from "../features/menubar/components/Menubar";
 
 const Home: NextPage = () => {
   const files = useFileStore((state) => state.files);
   return (
-    <>
+    <div className="bg-gray-600">
       <WelcomeModal />
-      <main className="h-screen flex">
+      <MenuBar />
+      <main className="h-screen flex w-screen">
         <aside className="flex-1">
           <div>
             {files.map((file, idx) => (
@@ -27,7 +29,7 @@ const Home: NextPage = () => {
           className="flex-5"
         />
       </main>
-    </>
+    </div>
   );
 };
 
