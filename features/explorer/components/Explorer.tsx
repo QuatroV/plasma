@@ -1,24 +1,11 @@
 import Image from "next/image";
 import { set, get } from "idb-keyval";
 import useFileStore, { FileInfo } from "../../../stores/fileStore";
+import useLoadFile from "../hooks/useLoadFile";
 
 const Explorer = () => {
   const files = useFileStore((state) => state.files);
-  const setCurrentFile = useFileStore((state) => state.setCurrentFile);
-  const currentFile = useFileStore((state) => state.currentFile);
-
-  const handleClick = async (_e: any, file: FileInfo) => {
-    if (file.kind === "file" && currentFile !== file.name) {
-      const fileHandle = (await get(file.name)) as FileSystemFileHandle;
-      const fileContent = await fileHandle.getFile();
-      var reader = new FileReader();
-      reader.onload = function (event) {
-        set("currentFile", event.target?.result);
-        setCurrentFile(fileContent.name);
-      };
-      reader.readAsText(fileContent, "UTF-8");
-    }
-  };
+  const { currentFile, openFile } = useLoadFile();
 
   return (
     <aside className="">
@@ -31,7 +18,7 @@ const Explorer = () => {
               "bg-gray-300 hover:outline-emerald-400 hover:outline outline-1 transition-all"
             }`}
             key={idx}
-            onClick={(e) => handleClick(e, file)}
+            onClick={(e) => openFile(e, file)}
           >
             <Image
               alt={file.kind === "directory" ? "d" : "f"}
