@@ -1,3 +1,4 @@
+import { set } from "idb-keyval";
 import useFileStore from "../../../stores/fileStore";
 import useWelcomeModalStore from "../stores/modalStore";
 
@@ -10,6 +11,7 @@ export default function useDirectory() {
 
     for await (const entry of directoryHandle.values()) {
       addFile({ name: entry.name, kind: entry.kind });
+      set(entry.name, entry);
     }
 
     setIsOpen(false);

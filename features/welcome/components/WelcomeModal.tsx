@@ -5,7 +5,7 @@ const WelcomeModal = () => {
   const isOpen = useWelcomeModalStore((state) => state.isOpen);
   return (
     <div
-      className={`flex justify-center items-center h-screen z-10 fixed w-screen bg-slate-900/50 backdrop-blur-sm ${
+      className={`flex justify-center items-center h-screen z-20 fixed w-screen bg-slate-900/50 backdrop-blur-sm ${
         !isOpen && "hidden"
       }`}
     >
