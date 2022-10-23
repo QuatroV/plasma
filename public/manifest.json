@@ -4,8 +4,8 @@
     "display": "fullscreen",
     "scope": "/",
     "start_url": "/",
-    "name": "PLASM",
-    "short_name": "PLASM",
+    "name": "PLASMA",
+    "short_name": "PLASMA",
     "description": "ASM Web IDE",
     "icons": [
         {

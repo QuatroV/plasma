@@ -30,9 +30,20 @@ const Home: NextPage = () => {
     <div className="bg-gray-400">
       <WelcomeModal />
       <MenuBar />
-      <main className="flex w-100 h-[calc(100vh-40px)]">
+      <main className="flex w-full h-[calc(100vh-40px)]">
         <Explorer />
-        <div className="w-full z-0">
+        <div className="z-0 flex-1">
+          <div className="bg-gray-500 flex">
+            <div className="bg-gray-300 p-1 border-l-2 shadow-lg cursor-pointer">
+              File 1
+            </div>
+            <div className="bg-gray-400 p-1 border-l-2 cursor-pointer">
+              File 2
+            </div>
+            <div className="bg-gray-400 p-1 border-l-2 cursor-pointer">
+              File 3
+            </div>
+          </div>
           <Editor
             defaultLanguage="javascript"
             defaultValue="// some comment"

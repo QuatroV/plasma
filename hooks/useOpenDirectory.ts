@@ -1,10 +1,8 @@
 import { set } from "idb-keyval";
-import useFileStore from "../../../stores/fileStore";
-import useWelcomeModalStore from "../stores/modalStore";
+import useFileStore from "../stores/fileStore";
 
-export default function useDirectory() {
+export default function useOpenDirectory(callback?: () => void) {
   const addFile = useFileStore((state) => state.addFile);
-  const setIsOpen = useWelcomeModalStore((state) => state.setIsOpen);
 
   const openDir = async () => {
     const directoryHandle = await window.showDirectoryPicker();
@@ -14,7 +12,9 @@ export default function useDirectory() {
       set(entry.name, entry);
     }
 
-    setIsOpen(false);
+    if (callback) {
+      callback();
+    }
   };
 
   return { openDir };

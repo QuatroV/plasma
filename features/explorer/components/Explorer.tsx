@@ -7,7 +7,7 @@ const Explorer = () => {
   const setCurrentFile = useFileStore((state) => state.setCurrentFile);
   const currentFile = useFileStore((state) => state.currentFile);
 
-  const handleClick = async (e: any, file: FileInfo) => {
+  const handleClick = async (_e: any, file: FileInfo) => {
     if (file.kind === "file" && currentFile !== file.name) {
       const fileHandle = (await get(file.name)) as FileSystemFileHandle;
       const fileContent = await fileHandle.getFile();
@@ -23,10 +23,13 @@ const Explorer = () => {
   return (
     <aside className="">
       <div className="bg-gray-300 mb-1 p-1 shadow">Explorer</div>
-      <div>
+      <div className=" overflow-y-auto h-[calc(100vh-72px)]">
         {files.map((file, idx) => (
           <div
-            className="hover:bg-gray-300 cursor-pointer rounded-tl-md rounded-bl-md p-1 mt-1 mb-1 ml-1 flex items-start gap-2"
+            className={`hover:bg-gray-300 cursor-pointer rounded-tl-md rounded-bl-md p-1 mt-1 mb-1 ml-1 flex items-start gap-2 ${
+              currentFile === file.name &&
+              "bg-gray-300 hover:outline-emerald-400 hover:outline outline-1 transition-all"
+            }`}
             key={idx}
             onClick={(e) => handleClick(e, file)}
           >
