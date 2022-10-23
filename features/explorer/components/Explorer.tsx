@@ -8,8 +8,8 @@ const Explorer = () => {
   const { currentFile, openFile } = useLoadFile();
 
   return (
-    <aside className="">
-      <div className="bg-gray-300 mb-1 p-1 shadow">Explorer</div>
+    <aside className=" w-60">
+      <div className="bg-gray-300 p-1 shadow">Explorer</div>
       <div className=" overflow-y-auto h-[calc(100vh-72px)]">
         {files.map((file, idx) => (
           <div

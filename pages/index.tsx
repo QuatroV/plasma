@@ -8,6 +8,7 @@ import MenuBar from "../features/menubar/components/Menubar";
 import Explorer from "../features/explorer/components/Explorer";
 import { get } from "idb-keyval";
 import { clear } from "idb-keyval";
+import Image from "next/image";
 
 const Home: NextPage = () => {
   const currentFile = useFileStore((state) => state.currentFile);
@@ -34,8 +35,15 @@ const Home: NextPage = () => {
         <Explorer />
         <div className="z-0 flex-1">
           <div className="bg-gray-500 flex">
-            <div className="bg-gray-300 p-1 border-l-2 shadow-lg cursor-pointer">
+            <div className="bg-gray-300 p-1 border-l-2 shadow-lg cursor-pointer flex items-center gap-1">
               File 1
+              <Image
+                src="/editor/close_FILL0_wght400_GRAD0_opsz48.svg"
+                height="20"
+                width="20"
+                alt=""
+                className="hover:bg-gray-400 rounded"
+              />
             </div>
             <div className="bg-gray-400 p-1 border-l-2 cursor-pointer">
               File 2
